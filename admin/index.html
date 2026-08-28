@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>amy's control room ♡</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Gaegu:wght@400;700&family=Patrick+Hand&display=swap');
+
+:root{
+  --ink:#321724;
+  --dark:#160c14;
+  --pink:#f3a5c3;
+  --hot:#ff4b9b;
+  --light:#ffe1ed;
+  --paper:#fff8fc;
+  --border:#91476d;
+  --muted:#75445c;
+  --green:#b9dfc7;
+  --red:#8e304e;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 15%,#ff9ac533 0 2px,transparent 3px),
+    radial-gradient(circle at 80% 25%,#ffffff55 0 2px,transparent 3px),
+    linear-gradient(180deg,#120b14,#29101f 55%,#4a1d37);
+  background-size:130px 130px,180px 180px,100% 100%;
+  color:var(--ink);
+  font-family:'DM Mono',monospace;
+  padding:25px 12px 60px;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.045;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent 0 3px,
+    #ffb7d3 4px,
+    transparent 5px
+  );
+  z-index:9999;
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.shell{
+  width:min(1000px,100%);
+  margin:auto;
+}
+
+.browser{
+  background:#f9edf4;
+  border:3px solid #6d3b58;
+  box-shadow:10px 10px #0007;
+}
+
+.chrome{
+  height:42px;
+  background:#261421;
+  color:#ffd7e8;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:7px 12px;
+  border-bottom:2px solid #a9547d;
+}
+
+.balls{
+  display:flex;
+  gap:5px;
+}
+
+.ball{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ff75b4;
+  box-shadow:0 0 7px #ff4b9b;
+}
+
+.address{
+  flex:1;
+  background:#3a2131;
+  border:1px solid #74415c;
+  padding:5px 8px;
+  font-size:8px;
+  color:#ffcadd;
+}
+
+.hero{
+  padding:28px 25px 20px;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 20%,#ff8fbd33,transparent 35%),
+    #1a0e17;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"✦  ✧  ♡  ✧  ✦";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:8px;
+  color:#ff9bc7;
+  opacity:.5;
+  letter-spacing:18px;
+}
+
+h1{
+  margin:0;
+  font:700 58px 'Gaegu',cursive;
+  color:#ff8fc1;
+  text-shadow:
+    0 0 6px #ff4b9b,
+    0 0 18px #ff4b9b,
+    0 0 35px #ff2d9144;
+}
+
+.subtitle{
+  color:#ffd0e1;
+  font:22px 'Patrick Hand',cursive;
+}
+
+.tagline{
+  margin-top:7px;
+  color:#bca0af;
+  font-size:9px;
+}
+
+.content{
+  padding:18px;
+}
+
+.panel{
+  background:var(--light);
+  border:2px solid var(--border);
+  padding:15px;
+  margin-bottom:15px;
+  box-shadow:4px 5px #54233722;
+}
+
+.panel h2{
+  margin:0 0 4px;
+  font:700 30px 'Gaegu',cursive;
+  color:#54243c;
+}
+
+.panel-note{
+  color:var(--muted);
+  font-size:8px;
+  margin-bottom:12px;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+label{
+  display:block;
+  color:#68324b;
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  margin:4px 0;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  border:2px solid #b56a8c;
+  background:#fff9fc;
+  color:#321724;
+  padding:8px;
+  outline:none;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:#ff4b9b;
+  box-shadow:0 0 0 2px #ff4b9b33;
+}
+
+.btn{
+  border:2px solid #71314f;
+  background:#f3a5c3;
+  color:#321724;
+  padding:8px 12px;
+  font-weight:bold;
+}
+
+.btn:hover{
+  background:#ffb9d3;
+  transform:translateY(-1px);
+}
+
+.btn.dark{
+  background:#321724;
+  color:#ffd9e8;
+}
+
+.btn.red{
+  background:#7d2947;
+  color:#ffe3ee;
+}
+
+.btn.green{
+  background:#b9dfc7;
+  color:#233b2c;
+}
+
+.actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.status{
+  padding:8px 10px;
+  margin-top:10px;
+  background:#f7bfd5;
+  border:1px dashed #9b5478;
+  font-size:9px;
+  color:#472638;
+}
+
+.status.good{
+  background:#d8f0df;
+  border-color:#6f9b7c;
+}
+
+.status.bad{
+  background:#ffd1dc;
+  border-color:#a53d5d;
+}
+
+.category-buttons{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin:10px 0;
+}
+
+.category-buttons button{
+  border:1px solid #a45b82;
+  background:#ffeaf2;
+  color:#5a2940;
+  padding:6px 9px;
+  font-size:9px;
+}
+
+.category-buttons button.active{
+  background:#321724;
+  color:#ffd7e7;
+}
+
+.preview{
+  max-width:180px;
+  max-height:150px;
+  object-fit:cover;
+  border:2px solid #91476d;
+  display:none;
+  margin-top:7px;
+  box-shadow:3px 3px #0002;
+}
+
+.post-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.post-row{
+  display:grid;
+  grid-template-columns:85px 1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:9px;
+  background:#fff3f8;
+  border:1px solid #b86c8d;
+}
+
+.post-row img{
+  width:85px;
+  height:65px;
+  object-fit:cover;
+  border:2px solid #985071;
+}
+
+.post-title{
+  font:700 21px 'Gaegu',cursive;
+  color:#4b2439;
+}
+
+.post-meta{
+  color:#75445c;
+  font-size:8px;
+}
+
+.small{
+  font-size:8px;
+  color:#75445c;
+}
+
+.lock{
+  font-size:30px;
+}
+
+.user-pill{
+  display:inline-block;
+  padding:5px 8px;
+  background:#321724;
+  color:#ffd9e8;
+  font-size:8px;
+  margin-top:4px;
+}
+
+.notice-image{
+  max-width:150px;
+  max-height:110px;
+  object-fit:cover;
+  border:2px solid #91476d;
+  margin-top:7px;
+}
+
+hr{
+  border:0;
+  border-top:1px dashed #b86c8d;
+  margin:15px 0;
+}
+
+@media(max-width:700px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .post-row{
+    grid-template-columns:65px 1fr;
+  }
+
+  .post-row .row-actions{
+    grid-column:1/-1;
+  }
+
+  .post-row img{
+    width:65px;
+    height:55px;
+  }
+
+  h1{
+    font-size:46px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="shell">
+
+  <div class="browser">
+
+    <div class="chrome">
+      <div class="balls">
+        <i class="ball"></i>
+        <i class="ball"></i>
+        <i class="ball"></i>
+      </div>
+
+      <div class="address">
+        https://amizingamy.github.io/amywrites/admin/ ✦
+      </div>
+
+      <span>♡</span>
+    </div>
+
+    <!-- LOGIN -->
+    <section id="loginScreen">
+
+      <div class="hero">
+        <h1>amy's control room</h1>
+        <div class="subtitle">private little corner of the internet ♡</div>
+        <div class="tagline">
+          everyone can read. only amy gets the keys.
+        </div>
+      </div>
+
+      <div class="content">
+
+        <div class="panel">
+
+          <div class="lock">🔐</div>
+
+          <h2>unlock the attic</h2>
+
+          <div class="panel-note">
+            login with the same Supabase account you created for AmyWrites.
+          </div>
+
+          <label>email</label>
+          <input
+            id="loginEmail"
+            type="email"
+            autocomplete="username"
+            placeholder="your email"
+          >
+
+          <label>password</label>
+          <input
+            id="loginPassword"
+            type="password"
+            autocomplete="current-password"
+            placeholder="your password"
+          >
+
+          <div class="actions">
+            <button class="btn" id="loginButton">
+              unlock ✦
+            </button>
+
+            <button class="btn dark" id="resetButton">
+              forgot password?
+            </button>
+          </div>
+
+          <div class="status" id="loginStatus">
+            ready when you are ♡
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ADMIN -->
+    <section id="adminScreen" class="hidden">
+
+      <div class="hero">
+        <h1>♡ little control room</h1>
+        <div class="subtitle">
+          amy gets the keys. kitties get the content.
+        </div>
+
+        <div id="userPill" class="user-pill"></div>
+      </div>
+
+
+      <div class="content">
+
+        <!-- TOP -->
+        <div class="panel">
+
+          <h2>hello, amy ✦</h2>
+
+          <div class="panel-note">
+            anything you publish here goes into Supabase.
+            the public website only reads the published content.
+          </div>
+
+          <button class="btn dark" id="logoutButton">
+            log out
+          </button>
+
+        </div>
+
+
+        <!-- CURRENTLY -->
+        <div class="panel">
+
+          <h2>currently... ♡</h2>
+
+          <div class="panel-note">
+            change this whenever you want. hiatus, news, random thoughts,
+            posting schedule, whatever.
+          </div>
+
+          <div class="grid">
+
+            <div class="full">
+              <label>headline</label>
+              <input
+                id="noticeTitle"
+                maxlength="120"
+                placeholder="probably romanticising everything."
+              >
+            </div>
+
+            <div class="full">
+              <label>subtext</label>
+              <textarea
+                id="noticeBody"
+                rows="3"
+                maxlength="500"
+                placeholder="and honestly? let me."
+              ></textarea>
+            </div>
+
+            <div>
+              <label>optional picture</label>
+              <input
+                id="noticeImage"
+                type="file"
+                accept="image/*"
+              >
+              <img id="noticePreview" class="preview">
+            </div>
+
+          </div>
+
+          <div class="actions">
+            <button class="btn" id="saveNoticeButton">
+              save little update ♡
+            </button>
+
+            <button class="btn dark" id="removeNoticeImageButton">
+              remove picture
+            </button>
+          </div>
+
+          <div class="status" id="noticeStatus"></div>
+
+        </div>
+
+
+        <!-- NEW POST -->
+        <div class="panel">
+
+          <h2>dump something ✦</h2>
+
+          <div class="panel-note">
+            make a new post. photos are stored in Supabase Storage.
+          </div>
+
+          <div class="category-buttons" id="categoryButtons">
+
+            <button class="active" data-type="food">🍓 food</button>
+            <button data-type="books">📖 books</button>
+            <button data-type="music">♫ music</button>
+            <button data-type="blog">💌 thoughts</button>
+            <button data-type="writing">✎ words</button>
+            <button data-type="art">🎨 art</button>
+            <button data-type="games">🎲 games</button>
+            <button data-type="fitness">🌱 fitness</button>
+
+          </div>
+
+          <form id="postForm">
+
+            <div class="grid">
+
+              <div class="full">
+                <label>title</label>
+                <input
+                  id="postTitle"
+                  required
+                  placeholder="strawberry cake..."
+                >
+              </div>
+
+              <div>
+                <label>short subtitle</label>
+                <input
+                  id="postSubtitle"
+                  placeholder="soft girl dessert · 45 mins"
+                >
+              </div>
+
+              <div>
+                <label>photo</label>
+                <input
+                  id="postImage"
+                  type="file"
+                  accept="image/*"
+                >
+                <img id="postPreview" class="preview">
+              </div>
+
+              <div class="full">
+                <label>body</label>
+                <textarea
+                  id="postBody"
+                  placeholder="write your thing here..."
+                ></textarea>
+              </div>
+
+              <div>
+                <label>author</label>
+                <input
+                  id="postAuthor"
+                  placeholder="Amy"
+                >
+              </div>
+
+              <div>
+                <label>rating</label>
+                <input
+                  id="postRating"
+                  placeholder="9/10 or 4/5"
+                >
+              </div>
+
+              <div>
+                <label>ingredients / details</label>
+                <textarea
+                  id="postIngredients"
+                  rows="5"
+                  placeholder="ingredients, players, notes, etc."
+                ></textarea>
+              </div>
+
+              <div>
+                <label>link</label>
+                <input
+                  id="postLink"
+                  type="url"
+                  placeholder="https://youtube.com/..."
+                >
+              </div>
+
+            </div>
+
+            <div class="actions">
+
+              <button
+                type="submit"
+                class="btn green"
+                id="publishButton"
+              >
+                publish to everyone ♡
+              </button>
+
+              <button
+                type="button"
+                class="btn dark"
+                id="clearPostButton"
+              >
+                clear
+              </button>
+
+            </div>
+
+          </form>
+
+          <div class="status" id="postStatus"></div>
+
+        </div>
+
+
+        <!-- POSTS -->
+        <div class="panel">
+
+          <h2>your posts ✦</h2>
+
+          <div class="panel-note">
+            these are the posts currently stored in Supabase.
+          </div>
+
+          <div class="post-list" id="postList">
+            loading little archive...
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   AMYWRITES ADMIN
+   ========================================================= */
+
+const SUPABASE_URL =
+  "https://aybeavwaltevvnzsetiu.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_xjov6ETIj0KTbN3_avD4mw_4Q7XxJMm";
+
+/*
+  This is the Storage bucket name we previously used
+  for AmyWrites image uploads.
+*/
+const STORAGE_BUCKET = "amy-images";
+
+
+const sb = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
+const $ = id => document.getElementById(id);
+
+let currentType = "food";
+
+let currentNoticeImageUrl = null;
+
+
+function escapeHTML(value = ""){
+
+  return String(value).replace(
+    /[&<>"']/g,
+
+    character => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[character])
+  );
+
+}
+
+
+function status(id,message,type=""){
+
+  const element = $(id);
+
+  if(!element) return;
+
+  element.textContent = message;
+
+  element.className = "status " + type;
+
+}
+
+
+function makeFilePath(file){
+
+  const extension =
+    (file.name.split(".").pop() || "jpg")
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g,"") || "jpg";
+
+  return `${crypto.randomUUID()}.${extension}`;
+
+}
+
+
+/* =========================================================
+   ADMIN CHECK
+   ========================================================= */
+
+async function checkAdmin(user){
+
+  if(!user){
+
+    return false;
+
+  }
+
+  const result =
+    await sb
+      .from("admins")
+      .select("user_id")
+      .eq("user_id",user.id)
+      .maybeSingle();
+
+  if(result.error){
+
+    console.error(result.error);
+
+    return false;
+
+  }
+
+  return !!result.data;
+
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+async function login(){
+
+  const email =
+    $("loginEmail").value.trim();
+
+  const password =
+    $("loginPassword").value;
+
+  if(!email || !password){
+
+    status(
+      "loginStatus",
+      "please enter both email and password ♡",
+      "bad"
+    );
+
+    return;
+
+  }
+
+  status(
+    "loginStatus",
+    "connecting to Supabase..."
+  );
+
+
+  const result =
+    await sb.auth.signInWithPassword({
+      email,
+      password
+    });
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    status(
+      "loginStatus",
+      result.error.message,
+      "bad"
+    );
+
+    return;
+
+  }
+
+
+  const user = result.data.user;
+
+
+  const admin =
+    await checkAdmin(user);
+
+
+  if(!admin){
+
+    await sb.auth.signOut();
+
+    status(
+      "loginStatus",
+      "login worked, but this account is not registered as an AmyWrites admin.",
+      "bad"
+    );
+
+    return;
+
+  }
+
+
+  await showAdmin(user);
+
+}
+
+
+/* =========================================================
+   SHOW ADMIN
+   ========================================================= */
+
+async function showAdmin(user){
+
+  $("loginScreen").classList.add("hidden");
+
+  $("adminScreen").classList.remove("hidden");
+
+  $("userPill").textContent =
+    user.email || "amy";
+
+
+  await loadNotice();
+
+  await loadPosts();
+
+}
+
+
+/* =========================================================
+   SESSION CHECK
+   ========================================================= */
+
+async function boot(){
+
+  try{
+
+    const result =
+      await sb.auth.getUser();
+
+    const user =
+      result.data?.user;
+
+    if(!user){
+
+      $("loginScreen").classList.remove("hidden");
+
+      $("adminScreen").classList.add("hidden");
+
+      return;
+
+    }
+
+
+    const admin =
+      await checkAdmin(user);
+
+
+    if(admin){
+
+      await showAdmin(user);
+
+    }else{
+
+      await sb.auth.signOut();
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+async function logout(){
+
+  await sb.auth.signOut();
+
+  location.reload();
+
+}
+
+
+/* =========================================================
+   PASSWORD RESET
+   ========================================================= */
+
+async function resetPassword(){
+
+  const email =
+    $("loginEmail").value.trim();
+
+  if(!email){
+
+    status(
+      "loginStatus",
+      "type your email first ♡",
+      "bad"
+    );
+
+    return;
+
+  }
+
+
+  /*
+    IMPORTANT:
+    This is the GitHub Pages admin URL,
+    NOT localhost and NOT Neocities.
+  */
+
+  const redirectTo =
+    "https://amizingamy.github.io/amywrites/admin/";
+
+
+  status(
+    "loginStatus",
+    "sending reset email..."
+  );
+
+
+  const result =
+    await sb.auth.resetPasswordForEmail(
+      email,
+      {
+        redirectTo
+      }
+    );
+
+
+  if(result.error){
+
+    status(
+      "loginStatus",
+      result.error.message,
+      "bad"
+    );
+
+    return;
+
+  }
+
+
+  status(
+    "loginStatus",
+    "check your email ♡ the reset link will bring you back here.",
+    "good"
+  );
+
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+$("categoryButtons")
+  .querySelectorAll("button")
+  .forEach(button => {
+
+    button.addEventListener("click",()=>{
+
+      currentType =
+        button.dataset.type;
+
+
+      $("categoryButtons")
+        .querySelectorAll("button")
+        .forEach(other =>
+          other.classList.remove("active")
+        );
+
+
+      button.classList.add("active");
+
+    });
+
+  });
+
+
+/* =========================================================
+   IMAGE PREVIEWS
+   ========================================================= */
+
+function previewFile(input,preview){
+
+  const file =
+    input.files?.[0];
+
+  if(!file){
+
+    preview.style.display = "none";
+
+    return;
+
+  }
+
+
+  const reader =
+    new FileReader();
+
+
+  reader.onload =
+    event => {
+
+      preview.src =
+        event.target.result;
+
+      preview.style.display =
+        "block";
+
+    };
+
+
+  reader.readAsDataURL(file);
+
+}
+
+
+$("postImage").addEventListener(
+  "change",
+  () =>
+    previewFile(
+      $("postImage"),
+      $("postPreview")
+    )
+);
+
+
+$("noticeImage").addEventListener(
+  "change",
+  () =>
+    previewFile(
+      $("noticeImage"),
+      $("noticePreview")
+    )
+);
+
+
+/* =========================================================
+   UPLOAD IMAGE
+   ========================================================= */
+
+async function uploadImage(file){
+
+  if(!file){
+
+    return null;
+
+  }
+
+
+  const path =
+    makeFilePath(file);
+
+
+  const result =
+    await sb
+      .storage
+      .from(STORAGE_BUCKET)
+      .upload(
+        path,
+        file,
+        {
+          contentType:file.type,
+          cacheControl:"31536000",
+          upsert:false
+        }
+      );
+
+
+  if(result.error){
+
+    throw result.error;
+
+  }
+
+
+  const publicUrl =
+    sb
+      .storage
+      .from(STORAGE_BUCKET)
+      .getPublicUrl(path)
+      .data
+      .publicUrl;
+
+
+  return publicUrl;
+
+}
+
+
+/* =========================================================
+   LOAD CURRENTLY
+   ========================================================= */
+
+async function loadNotice(){
+
+  const result =
+    await sb
+      .from("site_notice")
+      .select("*")
+      .eq("id",1)
+      .maybeSingle();
+
+
+  if(result.error){
+
+    console.warn(
+      "Could not load site notice:",
+      result.error
+    );
+
+    return;
+
+  }
+
+
+  const notice =
+    result.data;
+
+
+  if(!notice){
+
+    $("noticeTitle").value =
+      "probably romanticising everything.";
+
+    $("noticeBody").value =
+      "and honestly? let me.";
+
+    return;
+
+  }
+
+
+  $("noticeTitle").value =
+    notice.title || "";
+
+  $("noticeBody").value =
+    notice.body || "";
+
+  currentNoticeImageUrl =
+    notice.image_url || null;
+
+
+  if(currentNoticeImageUrl){
+
+    $("noticePreview").src =
+      currentNoticeImageUrl;
+
+    $("noticePreview").style.display =
+      "block";
+
+  }
+
+}
+
+
+/* =========================================================
+   SAVE CURRENTLY
+   ========================================================= */
+
+async function saveNotice(){
+
+  status(
+    "noticeStatus",
+    "saving little update..."
+  );
+
+
+  try{
+
+    const title =
+      $("noticeTitle").value.trim();
+
+    const body =
+      $("noticeBody").value.trim();
+
+
+    const file =
+      $("noticeImage").files?.[0];
+
+
+    let imageUrl =
+      currentNoticeImageUrl;
+
+
+    if(file){
+
+      imageUrl =
+        await uploadImage(file);
+
+    }
+
+
+    /*
+      We use UPDATE rather than INSERT because
+      the site_notice row is id = 1.
+    */
+
+    const result =
+      await sb
+        .from("site_notice")
+        .update({
+          title,
+          body,
+          image_url:imageUrl
+        })
+        .eq("id",1);
+
+
+    if(result.error){
+
+      throw result.error;
+
+    }
+
+
+    currentNoticeImageUrl =
+      imageUrl;
+
+
+    status(
+      "noticeStatus",
+      "saved ♡ everyone will get the new update.",
+      "good"
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+    status(
+      "noticeStatus",
+      error.message || String(error),
+      "bad"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   REMOVE NOTICE IMAGE
+   ========================================================= */
+
+async function removeNoticeImage(){
+
+  const result =
+    await sb
+      .from("site_notice")
+      .update({
+        image_url:null
+      })
+      .eq("id",1);
+
+
+  if(result.error){
+
+    status(
+      "noticeStatus",
+      result.error.message,
+      "bad"
+    );
+
+    return;
+
+  }
+
+
+  currentNoticeImageUrl =
+    null;
+
+  $("noticeImage").value = "";
+
+  $("noticePreview").style.display =
+    "none";
+
+
+  status(
+    "noticeStatus",
+    "picture removed ♡",
+    "good"
+  );
+
+}
+
+
+/* =========================================================
+   PUBLISH POST
+   ========================================================= */
+
+async function publishPost(event){
+
+  event.preventDefault();
+
+
+  const title =
+    $("postTitle").value.trim();
+
+
+  if(!title){
+
+    status(
+      "postStatus",
+      "give the post a title first ♡",
+      "bad"
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    $("publishButton");
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "uploading...";
+
+
+  status(
+    "postStatus",
+    "putting your little thing into the cloud ✦"
+  );
+
+
+  try{
+
+    const file =
+      $("postImage").files?.[0];
+
+
+    const imageUrl =
+      file
+        ? await uploadImage(file)
+        : null;
+
+
+    const extra = {
+
+      author:
+        $("postAuthor").value.trim(),
+
+      rating:
+        $("postRating").value.trim(),
+
+      ingredients:
+        $("postIngredients").value.trim(),
+
+      link:
+        $("postLink").value.trim()
+
+    };
+
+
+    const post = {
+
+      type:currentType,
+
+      title,
+
+      subtitle:
+        $("postSubtitle").value.trim(),
+
+      body:
+        $("postBody").value.trim(),
+
+      image_url:imageUrl,
+
+      extra,
+
+      published:true
+
+    };
+
+
+    const result =
+      await sb
+        .from("posts")
+        .insert(post);
+
+
+    if(result.error){
+
+      throw result.error;
+
+    }
+
+
+    status(
+      "postStatus",
+      "published ♡ everyone can now read it.",
+      "good"
+    );
+
+
+    clearPostForm();
+
+    await loadPosts();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    status(
+      "postStatus",
+      error.message || String(error),
+      "bad"
+    );
+
+  }finally{
+
+    button.disabled = false;
+
+    button.textContent =
+      "publish to everyone ♡";
+
+  }
+
+}
+
+
+/* =========================================================
+   CLEAR POST
+   ========================================================= */
+
+function clearPostForm(){
+
+  $("postForm").reset();
+
+  $("postPreview").style.display =
+    "none";
+
+}
+
+
+/* =========================================================
+   LOAD POSTS
+   ========================================================= */
+
+async function loadPosts(){
+
+  $("postList").textContent =
+    "loading little archive...";
+
+
+  const result =
+    await sb
+      .from("posts")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
+
+  if(result.error){
+
+    $("postList").innerHTML =
+      `<div class="status bad">
+        ${escapeHTML(result.error.message)}
+      </div>`;
+
+    return;
+
+  }
+
+
+  const posts =
+    result.data || [];
+
+
+  if(!posts.length){
+
+    $("postList").innerHTML =
+      `<div class="status">
+        nothing here yet. suspiciously peaceful. ♡
+      </div>`;
+
+    return;
+
+  }
+
+
+  $("postList").innerHTML =
+    posts
+      .map(renderPostRow)
+      .join("");
+
+
+  document
+    .querySelectorAll(".delete-post")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () =>
+          deletePost(
+            button.dataset.id
+          )
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   POST ROW
+   ========================================================= */
+
+function renderPostRow(post){
+
+  const image =
+    post.image_url
+
+      ? `<img
+          src="${escapeHTML(post.image_url)}"
+          alt=""
+          loading="lazy"
+        >`
+
+      : `<div
+          style="
+            width:85px;
+            height:65px;
+            display:grid;
+            place-items:center;
+            background:#ffeef5;
+            border:2px solid #985071;
+            font-size:25px;
+          "
+        >♡</div>`;
+
+
+  const date =
+    post.created_at
+      ? new Date(post.created_at)
+          .toLocaleDateString()
+      : "";
+
+
+  return `
+    <div class="post-row">
+
+      <div>
+        ${image}
+      </div>
+
+      <div>
+
+        <div class="post-title">
+          ${escapeHTML(post.title)}
+        </div>
+
+        <div class="post-meta">
+          ${escapeHTML(post.type || "")}
+          ${post.subtitle
+            ? " · " + escapeHTML(post.subtitle)
+            : ""}
+          ${date
+            ? " · " + date
+            : ""}
+        </div>
+
+      </div>
+
+      <div class="row-actions">
+
+        <button
+          class="btn red delete-post"
+          data-id="${escapeHTML(post.id)}"
+        >
+          delete
+        </button>
+
+      </div>
+
+    </div>
+  `;
+
+}
+
+
+/* =========================================================
+   DELETE POST
+   ========================================================= */
+
+async function deletePost(id){
+
+  const okay =
+    confirm(
+      "delete this post? this cannot be undone."
+    );
+
+
+  if(!okay){
+
+    return;
+
+  }
+
+
+  const result =
+    await sb
+      .from("posts")
+      .delete()
+      .eq("id",id);
+
+
+  if(result.error){
+
+    alert(result.error.message);
+
+    return;
+
+  }
+
+
+  await loadPosts();
+
+}
+
+
+/* =========================================================
+   BUTTON EVENTS
+   ========================================================= */
+
+$("loginButton")
+  .addEventListener(
+    "click",
+    login
+  );
+
+
+$("resetButton")
+  .addEventListener(
+    "click",
+    resetPassword
+  );
+
+
+$("logoutButton")
+  .addEventListener(
+    "click",
+    logout
+  );
+
+
+$("saveNoticeButton")
+  .addEventListener(
+    "click",
+    saveNotice
+  );
+
+
+$("removeNoticeImageButton")
+  .addEventListener(
+    "click",
+    removeNoticeImage
+  );
+
+
+$("postForm")
+  .addEventListener(
+    "submit",
+    publishPost
+  );
+
+
+$("clearPostButton")
+  .addEventListener(
+    "click",
+    clearPostForm
+  );
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+boot();
+
+</script>
+
+</body>
+</html>
