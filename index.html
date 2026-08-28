@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>just stuff. ☆ amywrites</title>
+<meta name="description" content="amywrites — a tiny whimsical corner of the web.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Gaegu:wght@400;700&family=Patrick+Hand&display=swap');
+
+:root{
+  --ink:#21151f;
+  --black:#0d0a10;
+  --deep:#171019;
+  --purple:#8c4f83;
+  --lav:#ead5e8;
+  --pink:#ff72b6;
+  --hot:#ff2d91;
+  --softpink:#ffd2e7;
+  --cream:#fff6dc;
+  --green:#a9d8bd;
+  --blue:#b9dce0;
+  --yellow:#ffe58f;
+  --paper:#fff9fc;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:'DM Mono',monospace;
+  background:
+    radial-gradient(circle at 10% 12%,#ff8dc533 0 2px,transparent 3px),
+    radial-gradient(circle at 78% 22%,#ffffff55 0 1.5px,transparent 3px),
+    radial-gradient(circle at 55% 80%,#ff4da833 0 2px,transparent 4px),
+    linear-gradient(180deg,#120d16 0,#21101d 30%,#321426 67%,#5b2844 100%);
+  background-size:120px 120px,180px 180px,100% 100%;
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:10000;
+  opacity:.055;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,#38223e 4px,transparent 5px);
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:#ff5fa9;text-shadow:0 0 6px #ff2d9133}
+
+#dust{position:fixed;inset:0;pointer-events:none;z-index:9998}
+.dust{
+  position:absolute;width:5px;height:5px;border-radius:50%;
+  background:#fff4ad;box-shadow:0 0 10px 4px #ffe98c88;
+  animation:dust 2.8s ease-in-out infinite;
+}
+@keyframes dust{50%{transform:translateY(-18px) scale(1.3);opacity:1}0%,100%{opacity:.15}}
+
+.wrap{
+  width:min(1180px,calc(100% - 28px));
+  margin:28px auto 60px;
+  position:relative;
+}
+
+/* ======= 2000s browser chrome ======= */
+.browser{
+  border:3px solid #60466d;
+  border-radius:17px;
+  background:#fff8fc;
+  box-shadow:0 0 0 2px #ff78b433,0 0 28px #ff3d9d33,10px 12px 0 #00000066,0 30px 70px #00000088;
+  overflow:hidden;
+}
+.chrome{
+  height:34px;padding:6px 10px;
+  display:flex;align-items:center;gap:8px;
+  background:linear-gradient(#291a2b,#171019);
+  border-bottom:2px solid #9d4b82;
+  font-size:10px;
+}
+.balls{display:flex;gap:5px}.ball{width:10px;height:10px;border-radius:50%;border:1px solid #76567f}
+.address{flex:1;padding:4px 10px;border:1px solid #8d4d7d;border-radius:5px;background:#0f0b12;font-size:9px;color:#ff9bcb}
+
+.hero{
+  position:relative;
+  min-height:275px;
+  overflow:hidden;
+  padding:42px 50px 30px;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 90%,#ff6fb522 0 4px,transparent 5px),
+    radial-gradient(circle at 30% 30%,#ffffff18 0 1px,transparent 2px),
+    linear-gradient(180deg,#0b0910,#160d19 52%,#30152a);
+}
+.moon{
+  position:absolute;left:8%;top:28px;
+  width:90px;height:90px;border-radius:50%;
+  background:#ffd7eb;
+  box-shadow:0 0 18px #ff76b699,0 0 42px #ff2d9155;
+}
+.moon:after{
+  content:"";position:absolute;left:25px;top:-7px;
+  width:90px;height:90px;border-radius:50%;background:#160d19;
+}
+.hero:after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:-30px;height:80px;
+  background:#a9c8b5;
+  border-radius:50% 50% 0 0;
+}
+.firefly{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff0a2;box-shadow:0 0 14px #ffe78c}
+.f1{left:23%;top:28%;animation:float 3s infinite}.f2{right:18%;top:20%;animation:float 4s .8s infinite}.f3{right:32%;top:55%;animation:float 3.5s 1s infinite}
+@keyframes float{50%{transform:translateY(-12px);opacity:.4}}
+
+.logo{
+  position:relative;z-index:2;
+  margin:0;color:#fff4ca;
+  font:700 clamp(58px,9vw,105px) 'Gaegu',cursive;
+  line-height:.75;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 12px #ff9bca,
+    0 0 28px #ff2d91,
+    4px 5px #00000066;
+  transform:rotate(-2deg);
+}
+.logo:before,.logo:after{
+  content:"";
+  position:absolute;
+  top:-7px;
+  width:0;height:0;
+  border-left:18px solid transparent;
+  border-right:18px solid transparent;
+  border-bottom:32px solid #ff9bc8;
+  filter:drop-shadow(0 0 7px #ff2d91);
+}
+.logo:before{left:16%;transform:rotate(-22deg)}
+.logo:after{right:16%;transform:rotate(22deg)}
+.sub{
+  position:relative;z-index:2;
+  margin:16px auto 0;color:#ffb7d7;
+  text-shadow:0 0 7px #ff4da8,0 0 17px #ff2d9166;
+  font:700 23px 'Patrick Hand',cursive;
+  letter-spacing:1px;
+}
+.hero-note{
+  position:relative;z-index:3;
+  display:inline-block;margin-top:18px;
+  padding:6px 13px;
+  border:2px solid #4f3b59;
+  background:#fff1a9;
+  transform:rotate(2deg);
+  font-size:10px;
+  box-shadow:3px 3px #39283e44;
+}
+
+/* ======= sticky tape + navigation ======= */
+.tape{
+  position:absolute;z-index:8;
+  width:90px;height:24px;background:#fff0a988;
+  transform:rotate(-5deg);
+}
+.tape.one{left:11%;top:250px}.tape.two{right:10%;top:250px;transform:rotate(6deg)}
+
+.navbar{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:6px;
+  padding:13px;
+  background:#170e17;
+  border-top:2px dashed #9e4f83;
+  border-bottom:2px dashed #9e4f83;
+}
+.navbar button{
+  padding:7px 12px;
+  border:2px solid #795980;
+  border-radius:4px;
+  background:#251526;
+  color:#ffd5e8;
+  box-shadow:2px 2px #583c6128;
+  font-size:10px;
+}
+.navbar button:hover,.navbar button.active{
+  background:#ff4da8;
+  color:#1b0c16;
+  box-shadow:0 0 13px #ff2d9166;
+  transform:rotate(-2deg) translateY(-2px);
+}
+
+/* ======= content ======= */
+.content{
+  position:relative;
+  padding:22px;
+  background:
+    radial-gradient(circle at 20% 20%,#ff4da812 0 1px,transparent 2px),
+    #110d12;
+  color:#f8dce9;
+  background-size:90px 90px;
+}
+.section{display:none;animation:pop .25s ease}.section.active{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(8px) rotate(.3deg)}to{opacity:1;transform:none}}
+
+.section-head{
+  display:flex;align-items:end;justify-content:space-between;gap:15px;
+  margin-bottom:14px;
+}
+h2{
+  margin:0;
+  color:#ff9dca;
+  text-shadow:0 0 7px #ff4da8,0 0 20px #ff2d9155;
+  font:700 clamp(35px,6vw,55px) 'Gaegu',cursive;
+  line-height:.8;
+}
+.kicker{font-size:9px;color:#99739d}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.box{
+  position:relative;
+  padding:17px;
+  border:2px solid #8f527d;
+  border-radius:9px;
+  background:#fff;
+  box-shadow:4px 5px #6a4c7120;
+}
+.box:nth-child(odd){transform:rotate(-.5deg)}
+.box:nth-child(even){transform:rotate(.4deg)}
+.box h3{
+  margin:0 0 6px;color:#9a5a82;
+  font:700 28px 'Patrick Hand',cursive;
+  text-shadow:0 0 6px #ff70b333;
+}
+.box p{line-height:1.65;font-size:12px}
+
+/* ======= readable page text =======
+   All light recipe/book/music/etc. cards use dark ink.
+   Decorative pink text stays pink; body copy stays readable. */
+.section .box{
+  color:#2b1723;
+}
+.section .box p,
+.section .box li,
+.section .box dd,
+.section .box dt,
+.section .box small,
+.section .box div{
+  color:#2b1723;
+}
+.section .box a{
+  color:#743456;
+  text-decoration:underline;
+}
+.section .box h3{
+  color:#713b5a;
+}
+.section .box .tag{
+  color:#ff9bca;
+}
+.section .box .play{
+  color:#fff;
+}
+.section .box .log button{
+  color:#496d56;
+}
+
+.section .box .rating{
+  color:#9b6718;
+}
+.section .box .meow{
+  color:#d63e82;
+  text-shadow:none;
+}
+.meow{color:#ff7eb8;text-shadow:0 0 7px #ff3d9d,0 0 18px #ff2d9166;letter-spacing:2px;font-size:15px!important}
+.tag{
+  display:inline-block;padding:3px 6px;margin-bottom:7px;
+  border:1px solid #a786ad;border-radius:3px;
+  background:#2a1627;font-size:8px;color:#ff9bca;box-shadow:0 0 8px #ff2d911c;
+}
+.x{
+  position:absolute;right:8px;top:7px;
+  border:0;background:none;color:#b080a2;font-size:13px;
+}
+
+/* ======= homepage ======= */
+.home{
+  display:grid;grid-template-columns:1.45fr .55fr;gap:15px;
+}
+.intro{
+  min-height:185px;
+  padding:20px;
+  border:2px solid #d39ab4;
+  background:
+    radial-gradient(circle at 90% 15%,#ff4da815 0 2px,transparent 3px),
+    #160f17;
+  color:#ffe6f1;
+  position:relative;
+  box-shadow:0 0 18px #ff2d9122,5px 5px #00000022;
+}
+.intro:before{
+  content:"★ important-ish";
+  position:absolute;right:14px;top:-12px;
+  padding:5px 8px;background:#ffe58f;
+  border:1px solid #a97d53;
+  font-size:8px;transform:rotate(5deg);
+}
+.intro h3{font:700 35px 'Gaegu';margin:0;color:#ff9bc8;text-shadow:0 0 8px #ff2d9166}
+.intro p{font-size:13px;line-height:1.8}
+.side-note{
+  padding:14px;border:2px solid #9a547f;background:#f2c5dc;color:#281622;
+  box-shadow:0 0 14px #ff2d9122;
+}
+.side-note h3{
+  color:#4b263d;
+  text-shadow:0 0 4px #fff;
+}
+.side-note #currently{
+  color:#281622;
+  font-weight:500;
+  line-height:1.55;
+}
+.side-note h3{font:700 24px 'Patrick Hand';margin:0 0 4px}
+.polaroid{
+  margin-top:15px;padding:10px 10px 18px;
+  background:#fff;box-shadow:5px 6px 0 #4c38471d;
+  transform:rotate(3deg);text-align:center;
+}
+.polaroid .drawing{
+  height:105px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#b8dfe1,#e7c7df);
+  font-size:45px;
+}
+
+.polaroid small{font:15px 'Patrick Hand';display:block;margin-top:8px}
+.mini-board{
+  margin:12px auto 0;
+  padding:11px 12px;
+  width:92%;
+  background:#fff3f8;
+  border:2px dashed #a35a83;
+  color:#472638;
+  transform:rotate(-1.5deg);
+  box-shadow:3px 4px #5c31521f;
+  font-size:9px;
+  line-height:1.8;
+}
+.mini-title{
+  color:#8a3f6a;
+  font:700 18px 'Patrick Hand',cursive;
+  margin-bottom:3px;
+}
+.mini-line{display:block}
+.cat-avatar{
+  position:relative;
+  width:170px;
+  margin:25px auto 4px;
+  transform:rotate(2deg);
+  text-align:center;
+}
+.cat-avatar img{
+  display:block;
+  width:150px;
+  height:150px;
+  margin:auto;
+  object-fit:cover;
+  object-position:center;
+  border:3px solid #ff78b8;
+  border-radius:8px;
+  box-shadow:
+    0 0 0 5px #190f19,
+    0 0 16px #ff2d91aa,
+    0 0 34px #ff2d9144;
+  filter:saturate(1.05);
+}
+.cat-caption{
+  margin-top:9px;
+  color:#ff86bc;
+  text-shadow:0 0 6px #ff2d91;
+  font:15px 'Patrick Hand',cursive;
+}
+
+/* ======= form ======= */
+details.add{
+  margin-bottom:15px;padding:12px;
+  border:2px dashed #ae8ab4;border-radius:8px;background:#f7edf8;
+}
+details.add summary{cursor:pointer;font:700 22px 'Patrick Hand';color:#65466e}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.field{display:flex;flex-direction:column;gap:3px}.full{grid-column:1/-1}
+.field label{font-size:8px;color:#805e86;text-transform:uppercase}
+.field input,.field textarea,.field select{
+  padding:8px;border:2px solid #ceb7d0;border-radius:5px;background:#fffdf8;color:var(--ink);outline:0;font-size:11px;
+}
+.field textarea{min-height:100px;resize:vertical}
+.save{
+  padding:9px 13px;border:2px solid #684a71;border-radius:5px;
+  background:#75567f;color:white;font-weight:700;font-size:10px;
+}
+.save:hover{background:#94739c}
+
+/* ======= music ======= */
+.room-charms{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:7px;
+  margin:16px 0 4px;
+  padding:12px 6px;
+  border-top:1px dashed #8d4f7c;
+  border-bottom:1px dashed #8d4f7c;
+}
+.room-charms button{
+  min-height:62px;
+  border:1px solid #8f507c;
+  border-radius:8px;
+  background:#1a1019;
+  color:#ff8cbe;
+  box-shadow:0 0 9px #ff2d9122;
+  font-size:21px;
+  transition:.15s;
+}
+.room-charms button:hover{
+  transform:translateY(-4px) rotate(-2deg);
+  background:#321526;
+  box-shadow:0 0 15px #ff2d9166;
+}
+.room-charms span{
+  display:block;
+  margin-top:3px;
+  color:#ffd2e5;
+  font-size:8px;
+}
+
+
+.vision-board{
+  position:relative;
+  margin:17px 0;
+  padding:18px 18px 16px;
+  background:
+    radial-gradient(circle at 20% 20%,#ffb5d52e 0 2px,transparent 3px),
+    #2b1727;
+  border:2px solid #9e527e;
+  box-shadow:0 0 18px #ff2d9122,6px 7px #0005;
+  transform:rotate(.3deg);
+}
+.board-tape{
+  position:absolute;top:-9px;left:44%;
+  width:90px;height:20px;background:#ffb5d477;
+  transform:rotate(-3deg);
+}
+.vision-title{
+  text-align:center;color:#ff9dc9;
+  font:700 31px 'Gaegu',cursive;
+  text-shadow:0 0 8px #ff2d91;
+  margin-bottom:10px;
+}
+.vision-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+.vision-card{
+  min-height:94px;
+  padding:9px;
+  border:1px solid #c27da4;
+  background:#f6cfdf;
+  color:#2d1925;
+  box-shadow:3px 4px #0004;
+  transform:rotate(-1deg);
+}
+.vision-card:nth-child(even){transform:rotate(1.5deg);background:#ffe5ee}
+.vision-icon{display:block;font-size:25px;margin-bottom:2px}
+.vision-card b{display:block;font:700 17px 'Patrick Hand',cursive;line-height:1}
+.vision-card small{display:block;margin-top:4px;font-size:8px;line-height:1.35}
+.vision-note{
+  margin:12px auto 0;
+  width:max-content;max-width:100%;
+  padding:6px 11px;
+  background:#ff79b5;color:#25101c;
+  border:1px solid #ffd1e5;
+  transform:rotate(-1deg);
+  font:700 15px 'Patrick Hand',cursive;
+  box-shadow:0 0 10px #ff2d9155;
+}
+
+.contradiction{
+  margin:17px 0;
+  padding:13px 18px;
+  border:2px dashed #9e527e;
+  background:#170f17;
+  box-shadow:0 0 14px #ff2d9120;
+  text-align:center;
+}
+.contradiction-title{
+  color:#ff91c2;
+  font:700 31px 'Gaegu',cursive;
+  text-shadow:0 0 8px #ff2d91;
+}
+.contradiction p{
+  margin:4px auto 7px;
+  max-width:700px;
+  color:#f4d6e4;
+  font-size:11px;
+  line-height:1.6;
+}
+.duality{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;color:#ffb3d1;font-size:9px}
+.duality span{padding:4px 7px;border:1px solid #8d4d7d;border-radius:20px}
+
+.garden-sky{position:absolute;inset:0 0 48% 0;background:linear-gradient(#120b1a,#211126 72%,#30442e)}
+.garden-star{position:absolute;color:#ffd8eb;text-shadow:0 0 8px #ff8dbf;font-size:14px;animation:twinkle 2.8s infinite}
+.gs1{left:12%;top:22%}.gs2{left:31%;top:37%;animation-delay:.8s}.gs3{right:28%;top:18%;animation-delay:1.3s}.gs4{right:9%;top:33%;animation-delay:1.8s}
+@keyframes twinkle{50%{opacity:.35;transform:scale(1.4)}}
+.garden-moon{position:absolute;right:14%;top:17px;color:#ffddea;font-size:45px;text-shadow:0 0 12px #ff9bc9,0 0 28px #ff2d9155}
+.garden-cloud{position:absolute;color:#5d4767;font-size:38px;opacity:.45}.gc1{left:7%;bottom:9%}.gc2{right:4%;bottom:12%}
+.garden-sky:after{content:"";position:absolute;left:0;right:0;bottom:0;height:48px;background:#132719;clip-path:polygon(0 65%,5% 45%,10% 63%,16% 38%,22% 62%,28% 40%,35% 65%,43% 42%,50% 63%,58% 36%,66% 63%,73% 43%,80% 65%,88% 38%,94% 60%,100% 43%,100% 100%,0 100%)}
+.garden-vines{position:absolute;left:0;right:0;top:0;padding:5px 3%;display:flex;justify-content:space-between;color:#ff91c0;font-size:15px;text-shadow:0 0 8px #ff2d91}
+.garden-path{position:absolute;bottom:0;left:45%;width:14%;height:67%;background:linear-gradient(90deg,#6f5a55,#b99a86,#6f5a55);clip-path:polygon(30% 0,70% 0,100% 100%,0 100%);opacity:.8;text-align:center;color:#d9c2ae;line-height:35px}
+.lilypond{position:absolute;right:8%;bottom:12px;width:150px;height:63px;background:#234e50;border:3px solid #5b8c82;border-radius:50%;box-shadow:inset 0 0 15px #071514,0 0 10px #6bb3a166}
+.water-ripple{position:absolute;border:1px solid #83c5bb;border-radius:50%;opacity:.5}.r1{width:55px;height:18px;left:45px;top:23px}.r2{width:80px;height:25px;left:32px;top:18px}
+.pond-lily{position:absolute;left:52px;top:14px;color:#ffd7eb;font-size:25px;text-shadow:0 0 7px #ff90c0}.pond-frog{position:absolute;right:9px;bottom:4px;color:#9fe1a6;font-size:12px}
+.lily-cluster{position:absolute;width:54px;height:54px;bottom:36px}.lc1{left:12%}.lc2{left:33%;bottom:50px;transform:scale(.7)}.lc3{right:27%;bottom:44px;transform:scale(.82)}
+.lily-petal{position:absolute;left:17px;top:8px;width:20px;height:34px;background:linear-gradient(#fff1fa,#ff9dc5);border-radius:55% 55% 30% 30%;transform-origin:bottom center;box-shadow:0 0 7px #ff9bc966}
+.p1{transform:rotate(-45deg)}.p2{transform:rotate(45deg)}.p3{transform:rotate(-90deg)}.p4{transform:rotate(90deg)}
+.lily-center{position:absolute;left:22px;top:20px;color:#ffe06d;text-shadow:0 0 7px #ffd45a;font-size:13px}
+.garden-flower{position:absolute;bottom:38px;color:#ff9fc8;font-size:28px;text-shadow:0 0 8px #ff6eae;animation:sway 3s ease-in-out infinite}
+.gf1{left:22%}.gf2{left:27%;bottom:30px;color:#d8b6ff;animation-delay:.4s}.gf3{right:40%;bottom:35px;color:#fff0f5;animation-delay:1s}.gf4{right:20%;bottom:29px;color:#ffb2d4;animation-delay:1.5s}
+@keyframes sway{50%{transform:rotate(4deg) translateY(-2px)}}
+.mushroom{position:absolute;bottom:31px;width:26px;height:35px}.mush1{left:6%}.mush2{right:32%;transform:scale(.7)}
+.mushroom b{position:absolute;top:0;left:0;width:28px;height:17px;border-radius:50% 50% 25% 25%;background:#ff70ad;border:2px solid #7e4162;color:#ffd7e7;font-size:8px;text-align:center}
+.mushroom i{position:absolute;left:10px;top:14px;width:8px;height:21px;background:#eac9d5;border:1px solid #7d5364}
+.garden-bush{position:absolute;bottom:25px;width:120px;height:45px;border-radius:50%;background:#1d432c;box-shadow:inset 15px 8px #285d3a,inset -18px -7px #122a1d}
+.bush1{left:-10px}.bush2{right:-15px;transform:scale(1.2)}.bush3{left:54%;transform:scale(.65)}
+.garden-cat{position:absolute;left:46%;bottom:26px;font-size:32px;filter:drop-shadow(0 0 6px #ff78b8)}
+.garden-sign{position:absolute;left:3%;top:35%;padding:7px 10px;background:#f3c5d8;color:#38202d;border:2px solid #8e4e71;transform:rotate(-3deg);font:700 14px 'Patrick Hand',cursive;box-shadow:4px 5px #0004}
+.garden-sign small{font-size:9px}
+.firefly-garden{position:absolute;color:#fff1a5;text-shadow:0 0 10px #ffe879;font-size:12px;animation:firefly 3s infinite}
+.fg1{left:17%;top:58%}.fg2{left:39%;top:70%;animation-delay:.7s}.fg3{right:18%;top:58%;animation-delay:1.2s}.fg4{right:42%;top:45%;animation-delay:1.8s}
+@keyframes firefly{50%{transform:translateY(-13px);opacity:.3}}
+.intro{min-height:0!important;height:185px;padding:18px 20px!important;background:#ffe0eb;color:#2c1723;border:2px solid #9a4f77;box-shadow:5px 6px #0003,0 0 18px #ff2d9122;transform:rotate(-1deg)}
+.intro:before{display:none}.intro h3{color:#6c3153;font:700 30px 'Gaegu',cursive;margin:0 0 2px;text-shadow:none}.intro p{margin:5px 0;font-size:10px;line-height:1.45}.intro .meow{font-size:13px!important;color:#d83f87;text-shadow:0 0 7px #ff4da8}
+.pin{position:absolute;left:50%;top:-11px;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:#d43e7f;border:2px solid #7e2d58;box-shadow:0 2px 5px #0006}
+.note-tape{position:absolute;right:18px;top:-9px;width:55px;height:17px;background:#ffb3cf99;transform:rotate(7deg)}
+.side-note{position:relative;min-height:185px;padding:14px!important;border:2px solid #9a547f;background:#f2c5dc;color:#281622;box-shadow:0 0 14px #ff2d9122}
+.side-note h3{color:#4b263d!important;font-size:24px!important}.side-note #currently{color:#281622!important;font-weight:600;line-height:1.45;font-size:10px}
+.rose-vine{position:absolute;inset:30px 3px 24px;overflow:hidden;pointer-events:none}.rose{position:absolute;color:#e83e83;font-size:30px;text-shadow:0 0 8px #ff4d9c,0 0 18px #ff2d9155;animation:rosefloat 3s ease-in-out infinite}
+.rose1{left:8%;top:25%}.rose2{right:10%;top:5%;animation-delay:.7s}.rose3{left:45%;bottom:2%;font-size:23px;animation-delay:1.2s}.vine{position:absolute;color:#6c9a69;font-size:25px;letter-spacing:-5px}.vleft{left:-10px;top:50%;transform:rotate(-18deg)}.vright{right:-13px;top:36%;transform:rotate(18deg)}
+.leaf{position:absolute;color:#6f9b70;font-size:18px}.l1{left:24%;top:20%;transform:rotate(-25deg)}.l2{right:24%;top:27%;transform:rotate(25deg)}.l3{left:35%;bottom:12%;transform:rotate(35deg)}.l4{right:34%;bottom:18%;transform:rotate(-35deg)}
+@keyframes rosefloat{50%{transform:translateY(-4px) rotate(3deg)}}.tiny-charm-row{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:14px;color:#7e3d60;font-size:14px}
+.whimsy-labyrinth{position:relative;height:330px;margin:0 -22px;overflow:hidden;border-top:3px solid #7d3d67;border-bottom:3px solid #7d3d67;background:#11151a;image-rendering:pixelated;box-shadow:inset 0 0 35px #000a,0 0 20px #ff2d9122}
+.maze-sky{position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,#fff 0 1px,transparent 2px),radial-gradient(circle at 74% 17%,#ffb8d9 0 1px,transparent 2px),radial-gradient(circle at 48% 10%,#fff 0 1px,transparent 2px),linear-gradient(#0e0c17,#1a1721 55%,#1c3324)}
+.maze-moon{position:absolute;right:10%;top:15px;color:#ffe3ef;font-size:45px;text-shadow:0 0 10px #ffb1d4,0 0 28px #ff2d9155}.maze-star{position:absolute;color:#fff0f8;text-shadow:0 0 8px #ff79b7;animation:twinkle 2.5s infinite}
+.ms1{left:10%;top:18%}.ms2{left:32%;top:12%;animation-delay:.6s}.ms3{right:31%;top:28%;animation-delay:1s}.ms4{right:15%;top:48%;animation-delay:1.6s}
+.maze{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(760px,88%);height:265px;background:#294a31;border:10px solid #173020;box-shadow:0 0 0 4px #58734f,0 0 18px #0b160e}
+.maze-wall{position:absolute;background:#4f754d;box-shadow:inset 3px 0 #73915f,inset -3px 0 #203a27;z-index:2}
+.wall-a{left:9%;top:12%;width:70%;height:13px}.wall-b{left:9%;top:12%;width:13px;height:68%}.wall-c{left:22%;top:37%;width:56%;height:13px}.wall-d{right:9%;top:12%;width:13px;height:68%}.wall-e{left:22%;top:37%;width:13px;height:38%}.wall-f{left:35%;top:55%;width:43%;height:13px}.wall-g{left:48%;top:25%;width:13px;height:43%}.wall-h{left:61%;top:12%;width:13px;height:25%}.wall-i{left:9%;top:80%;width:39%;height:13px}.wall-j{right:9%;top:80%;width:38%;height:13px}.wall-k{left:48%;top:68%;width:13px;height:25%}.wall-l{left:61%;top:68%;width:27%;height:13px}.wall-m{left:35%;top:80%;width:13px;height:13%}.wall-n{left:74%;top:48%;width:13px;height:45%}.wall-o{left:22%;top:68%;width:27%;height:13px}
+.maze-flower,.maze-lily{position:absolute;z-index:4;color:#ff8fbe;text-shadow:0 0 8px #ff3d9d;font-size:22px}.mf1{left:4%;top:7%}.mf2{right:3%;top:10%}.mf3{left:4%;bottom:7%}.mf4{right:5%;bottom:8%;color:#d8b8ff}.maze-lily{color:#fff0f7;font-size:26px}.ml1{left:42%;top:7%}.ml2{right:16%;bottom:9%}
+
+.maze-player{
+  z-index:20;
+  position:absolute;
+  left:18px;
+  top:auto;
+  bottom:18px;
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+  line-height:1;
+  pointer-events:none;
+  user-select:none;
+  transition:left .12s linear,top .12s linear;
+  filter:drop-shadow(0 0 5px #ffb35a) drop-shadow(0 2px 2px #111);
+}
+.maze-player.happy{
+  animation:kittyhop .42s ease-in-out 2;
+}
+@keyframes kittyhop{
+  50%{transform:translateY(-7px) rotate(-5deg) scale(1.08)}
+}
+.maze-goal{
+  position:absolute;
+  z-index:12;
+  right:5%;
+  top:6%;
+  width:66px;
+  height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1px;
+  color:#ffe7a4;
+  text-shadow:0 0 6px #ffe37b,0 0 15px #ff8ac2;
+  font-size:18px;
+  animation:goalglow 1.8s ease-in-out infinite;
+  pointer-events:none;
+}
+.maze-goal b{
+  color:#fff2c9;
+  font-size:27px;
+}
+.maze-goal small{
+  position:absolute;
+  top:63px;
+  width:100px;
+  text-align:center;
+  color:#ffd5e6;
+  font:11px 'Patrick Hand',cursive;
+  text-shadow:0 1px 3px #000;
+}
+@keyframes goalglow{
+  50%{transform:scale(1.12);filter:drop-shadow(0 0 9px #ffd96e)}
+}
+.maze-caption{
+  display:flex!important;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+#mazeReset{
+  border:1px solid #a96080;
+  background:#21121d;
+  color:#ffb5d2;
+  padding:3px 8px;
+  font:10px 'DM Mono',monospace;
+  cursor:pointer;
+  box-shadow:0 0 7px #ff2d9122;
+}
+#mazeReset:hover{background:#3b1c30;color:#fff}
+.maze.is-won{
+  box-shadow:0 0 0 4px #8fae73,0 0 24px #ffd56a88;
+}
+.maze-win{
+  position:absolute;
+  z-index:30;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  padding:10px 15px;
+  background:#ffd7e8;
+  color:#3a172a;
+  border:2px solid #a9577c;
+  box-shadow:0 0 20px #ffb0d6;
+  text-align:center;
+  font:700 19px 'Patrick Hand',cursive;
+  animation:winpop .3s ease-out;
+}
+.maze-win small{display:block;font:10px 'DM Mono',monospace;margin-top:4px}
+@keyframes winpop{
+  from{transform:translate(-50%,-50%) scale(.75);opacity:0}
+  to{transform:translate(-50%,-50%) scale(1);opacity:1}
+}
+
+.maze-cat{position:absolute;z-index:5;left:47%;top:44%;font-size:28px;filter:drop-shadow(0 0 7px #ff77b7)}.maze-note{position:absolute;z-index:6;left:8%;bottom:8%;padding:5px 8px;background:#f5cddd;color:#3a1c2d;border:2px solid #8c4a6f;transform:rotate(-3deg);font:12px 'Patrick Hand',cursive;box-shadow:3px 4px #0005}
+.maze-firefly{position:absolute;z-index:7;color:#fff0a4;text-shadow:0 0 9px #ffe66e;animation:firefly 3s infinite}.ff1{left:28%;top:28%}.ff2{right:25%;top:58%;animation-delay:.8s}.ff3{left:67%;bottom:15%;animation-delay:1.5s}
+.maze-caption{position:absolute;z-index:8;left:50%;bottom:7px;transform:translateX(-50%);padding:4px 10px;background:#100b14dd;border:1px solid #8b4d73;color:#ffb3d1;font:13px 'Patrick Hand',cursive}
+
+.post-card{padding:0!important;overflow:hidden;position:relative}
+.post-card summary{list-style:none;cursor:pointer;padding:13px 38px 13px 15px;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#281522;background:linear-gradient(135deg,#ffe5ef,#f6cfe0);font-weight:700}
+.post-card summary{position:relative;justify-content:flex-start}.post-summary-thumb{width:78px;height:62px;object-fit:cover;flex:0 0 78px;border:2px solid #8f4d70;background:#fff8fb;box-shadow:2px 3px #4b20301f;transform:rotate(-1.5deg);border-radius:1px}.post-card:nth-child(even) .post-summary-thumb{transform:rotate(1.5deg)}.post-summary-text{min-width:0;display:flex;flex-direction:column;gap:4px}.post-summary-title{max-width:100%}.post-summary-snippet{font-size:9px;font-weight:400;color:#4a2938;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.post-card[open] .post-summary-snippet{display:none}.post-card[open] .post-summary-thumb{width:90px;height:72px;flex-basis:90px}@media(max-width:650px){.post-summary-thumb{width:64px;height:58px;flex-basis:64px}.post-card[open] .post-summary-thumb{width:100%;height:150px;flex-basis:auto;align-self:flex-start}}
+.post-card summary::-webkit-details-marker{display:none}
+.post-card summary:after{content:'♡';position:absolute;right:14px;color:#b14c7b;font-size:16px}
+.post-card[open] summary:after{content:'⌃'}
+.post-summary-title{font-family:'Gaegu',cursive;font-size:22px;color:#54243e;line-height:1.05}.post-summary-meta{font-size:8px;color:#75435d;text-align:right;font-weight:500}
+.post-expanded{padding:12px 15px 16px;background:#fff7fb;color:#2b1723;line-height:1.65;font-size:10px}.post-copy{color:#2b1723}.post-copy.preserve{white-space:pre-line;line-height:1.8}.poem-copy{line-height:2!important}
+.recipe-ingredients{margin:6px 0 10px;padding:8px;background:#fff0d7;border-left:3px solid #d9789d;white-space:pre-line;color:#2b1723}.post-image{max-height:300px;margin:0 auto 12px}.post-card .x{position:absolute;right:8px;top:8px;z-index:10}.fitness-day{padding:7px 0;border-top:1px dashed #b77a98;color:#3b2030}.fitness-day .uploaded-image{max-width:280px}
+.music{background:linear-gradient(135deg,#fff0f6,#e9e2f7)}
+.home .box:has(#homeSong){background:#f0c4d8;border-color:#925171}
+#homeSong{color:#2b1723;font-weight:600;line-height:1.65}
+#homeSong small{color:#432334}
+.play{display:inline-block;margin-top:7px;padding:5px 8px;background:#65466e;color:#fff;text-decoration:none;font-size:9px;border-radius:3px}
+
+/* ======= fitness ======= */
+.workout{background:linear-gradient(135deg,#e8f7ed,#eaf4fa)}
+.video{width:100%;aspect-ratio:16/9;border:0;border-radius:5px;background:#dce8e0}
+.progress{height:9px;border-radius:99px;background:#d8ded9;overflow:hidden;margin:8px 0}.progress span{display:block;height:100%;background:#79ad8e}
+.log{
+  margin-top:8px;padding:8px;border:1px dashed #9bb7a4;background:#f6fff7;font-size:9px;
+}
+.log button{margin-top:5px;padding:6px;border:1px solid #72947f;background:#fff;color:#496d56;font-size:9px}
+
+/* ======= games ======= */
+.rating{color:#d59b3d;letter-spacing:2px;font-size:13px}
+
+/* ======= guestbook modal ======= */
+.modal{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:#392746bb;backdrop-filter:blur(5px);
+  align-items:center;justify-content:center;padding:18px;
+}
+.modal.open{display:flex}
+.modal-card{
+  width:min(600px,95vw);max-height:90vh;overflow:auto;
+  padding:25px;border:3px solid #67466f;border-radius:13px;
+  background:#fff8df;box-shadow:10px 12px #271b2d55;
+  animation:pop .25s ease;
+}
+.close{float:right;border:0;background:none;font-size:22px;color:#6d4d74}
+.modal-card h2{font-size:48px}
+
+/* ======= footer ======= */
+.footer{
+  padding:18px;text-align:center;
+  background:#170e17;border-top:2px dashed #9e4f83;
+  font-size:9px;line-height:2;color:#dca8c3;
+}
+.badge{
+  display:inline-block;margin:2px;padding:3px 6px;
+  border:1px solid #95719c;background:#fff5d4;font-size:8px;
+}
+
+/* ======= responsive ======= */
+@media(max-width:800px){
+  .home{grid-template-columns:1fr}.layout{}
+}
+
+/* image uploads */
+.image-upload{border:2px dashed #a45b82;background:#ffe5ef;padding:10px;color:#3a1d2d;border-radius:6px}
+.image-upload label{display:block;color:#65324f;font-weight:700;margin-bottom:5px}.image-upload input[type=file]{width:100%;color:#3a1d2d;font-size:9px}.image-hint{display:block;margin-top:5px;color:#70445c;font-size:8px}.upload-preview{display:none;max-width:150px;max-height:120px;margin-top:8px;border:2px solid #a45b82}.upload-preview.show{display:block}.uploaded-image{display:block;width:100%;max-height:360px;object-fit:contain;margin:10px 0;padding:6px;background:#fff9fc;border:2px solid #9a5578;box-shadow:4px 5px #5d30451f;transform:rotate(-.7deg)}.uploaded-image:nth-of-type(even){transform:rotate(.7deg)}
+
+@media(max-width:650px){
+.whimsy-labyrinth{height:280px}.maze{width:94%;height:220px}.maze-note{font-size:10px}
+.whimsy-garden{height:250px}.lilypond{right:3%;width:120px}.garden-note{font-size:10px}
+.vision-grid{grid-template-columns:repeat(2,1fr)}
+.window{left:4%;width:140px;height:105px}
+.shelf{left:3%;width:170px}
+.desk{left:5%;bottom:65px}
+.easel{right:24%;bottom:55px}
+.guitar{right:8%;bottom:55px}
+.bed{right:0;bottom:45px;width:220px}
+.garden-note{font-size:10px}.room-charms{grid-template-columns:repeat(4,1fr)}
+
+  .wrap{width:calc(100% - 8px);margin:8px auto 25px}
+  .hero{padding:45px 15px 30px;min-height:250px}
+  .moon{width:65px;height:65px;left:7%;top:35px}.moon:after{width:65px;height:65px;left:20px;top:-5px}
+  .grid,.form{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  .content{padding:13px}
+  .tape{display:none}
+}
+
+/* ===== AMYWRITES editable notice ===== */
+.site-notice{position:relative;margin:12px 0;padding:10px 12px;background:#ffd9e8;border:2px solid #91476d;box-shadow:4px 4px #54233720;color:#321724;cursor:pointer;display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center}
+.site-notice.no-image{grid-template-columns:1fr}.site-notice img{width:72px;height:62px;object-fit:cover;border:2px solid #91476d;background:#fff8fb;transform:rotate(-2deg)}
+.notice-kicker{font-size:8px;text-transform:uppercase;letter-spacing:1px;color:#7a3b59}.notice-title{font:700 22px 'Gaegu',cursive;color:#4b2439;line-height:1.05}.notice-text{font-size:9px;color:#321724;line-height:1.4}.notice-edit{position:absolute;right:6px;bottom:4px;font-size:7px;color:#8e496c}
+.notice-editor{display:none;grid-column:1/-1;margin-top:8px;padding:10px;background:#fff0f6;border-top:1px dashed #ad6b8b}.notice-editor.show{display:block}.notice-editor input,.notice-editor textarea{width:100%;box-sizing:border-box;margin:4px 0 8px;padding:7px;border:1px solid #a45b82;background:#fffafd;color:#321724}.notice-editor button{border:2px solid #71314f;background:#f3a5c3;color:#321724;padding:5px 9px;font-family:inherit;cursor:pointer}.notice-preview{max-width:110px;max-height:80px;display:none;margin-top:4px;border:2px solid #91476d}
+
+/* ===== compact scrapbook posts ===== */
+.post-card{position:relative;display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center;min-height:92px;padding:10px;margin:10px 0;background:#ffe3ee;border:2px solid #9b5478;box-shadow:3px 4px #4b20301c;cursor:pointer;color:#321b28;transition:.16s}
+.post-card:hover{transform:translateY(-2px) rotate(-.25deg);box-shadow:5px 6px #4b20302c}.post-card.no-photo{grid-template-columns:1fr;min-height:62px}.post-thumb{width:96px;height:78px;object-fit:cover;display:block;border:2px solid #8f4d70;background:#fff8fb;box-shadow:2px 3px #4b20301f;transform:rotate(-1.5deg)}.post-card:nth-child(even) .post-thumb{transform:rotate(1.5deg)}
+.post-preview-title{margin:0 24px 3px 0;color:#4b2439;font:700 23px 'Gaegu',cursive;line-height:1}.post-preview-meta{color:#75445c;font-size:8px;text-transform:uppercase;letter-spacing:.5px}.post-preview-snippet{margin-top:5px;color:#38202d;font-size:9px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.post-open{position:absolute;right:7px;top:6px;color:#a33f72;font-size:8px}.post-expand{display:none;grid-column:1/-1;border-top:1px dashed #ad6b8b;padding-top:10px;margin-top:2px;color:#2d1925;font-size:10px;line-height:1.65}.post-card.expanded{grid-template-columns:120px minmax(0,1fr);align-items:start}.post-card.expanded .post-thumb{width:120px;height:110px}.post-card.expanded .post-expand{display:block}.post-card .x{z-index:10}
+@media(max-width:650px){.post-card{grid-template-columns:78px minmax(0,1fr)}.post-thumb{width:78px;height:70px}.post-card.expanded{grid-template-columns:1fr}.post-card.expanded .post-thumb{width:100%;height:180px}}
+
+/* =========================================================
+   PUBLIC MODE — content is read from Neocities content.json
+   Publishing happens from the private GitHub Pages admin.
+   ========================================================= */
+.details.add, details.add, .footer .save, .footer #restore { display:none !important; }
+.public-sync-status{font-size:8px;color:#b889a4;text-align:center;margin-top:6px}
+
+</style>
+</head>
+
+<body>
+<div id="dust"></div>
+
+<div class="wrap">
+<div class="browser">
+
+  <div class="chrome">
+    <div class="balls"><i class="ball"></i><i class="ball"></i><i class="ball"></i></div>
+    <div class="address">https://amywrites.neocities.org/ ✦</div>
+    <span>☆</span>
+  </div>
+
+  <header class="hero">
+    <div class="moon"></div>
+    <i class="firefly f1"></i><i class="firefly f2"></i><i class="firefly f3"></i>
+    <h1 class="logo">just stuff.</h1>
+    <div class="sub">amywrites</div>
+    <div class="hero-note">♡ Becoming HER because WE deserve it. ♡</div>
+  </header>
+<section class="site-notice no-image" id="siteNotice" onclick="toggleNoticeEditor(event)">
+  <div id="noticeVisual" style="display:none"></div>
+  <div><div class="notice-kicker">little update from amy ✦</div>
+  <div class="notice-title" id="noticeTitle">probably romanticising everything.</div>
+  <div class="notice-text" id="noticeText">and honestly? let me.</div></div>
+  <div class="notice-edit">click to edit ♡</div>
+  <div class="notice-editor" id="noticeEditor" onclick="event.stopPropagation()">
+    <label>headline</label><input id="noticeTitleInput" maxlength="90">
+    <label>subtext</label><textarea id="noticeTextInput" rows="3" maxlength="280"></textarea>
+    <label>optional picture</label><input id="noticeImageInput" type="file" accept="image/*" onchange="previewNoticeImage(this)">
+    <img id="noticeImagePreview" class="notice-preview">
+    <button type="button" onclick="saveNotice()">save little update ♡</button>
+    <button type="button" onclick="clearNoticeImage()">remove picture</button>
+  </div>
+</section>
+
+
+  <div class="tape one"></div><div class="tape two"></div>
+
+  <nav class="navbar" id="nav">
+    <button class="active" data-section="home">♡ home</button>
+    <button data-section="food">🍓 food</button>
+    <button data-section="books">📖 books</button>
+    <button data-section="music">♫ music</button>
+    <button data-section="blog">💌 thoughts</button>
+    <button data-section="writing">✎ words</button>
+    <button data-section="art">🎨 art</button>
+    <button data-section="games">🎲 games</button>
+    <button data-section="fitness">🌱 fitness</button>
+  </nav>
+
+  <main class="content">
+
+    <!-- HOME -->
+    <section class="section active" id="home">
+      <div class="section-head">
+        <div><h2>hi, kitties ☆</h2><div class="kicker">welcome to the tiny attic</div></div>
+        <div class="kicker" id="clock">loading...</div>
+      </div>
+
+      <div class="home">
+        <div class="intro">
+          <div class="pin">●</div>
+          <div class="note-tape"></div>
+          <h3>you found my website.</h3>
+          <p>cute.</p>
+          <p>recipes. books. playlists.<br>weird thoughts. little drawings.<br>games. words. whatever.</p>
+          <p><b>take a look</b></p>
+          <p class="meow"><b>MEOW.</b> ✿</p>
+        </div>
+
+        <div class="side-note">
+          <h3>currently...</h3>
+          <div id="currently">probably romanticising everything.</div>
+          <div class="rose-vine">
+            <span class="rose rose1">✿</span><span class="rose rose2">✿</span><span class="rose rose3">❀</span>
+            <span class="vine vleft">〰〰〰</span><span class="vine vright">〰〰〰</span>
+            <span class="leaf l1">♡</span><span class="leaf l2">♡</span><span class="leaf l3">♡</span><span class="leaf l4">♡</span>
+          </div>
+          <div class="tiny-charm-row"><span>🕯</span><span>♡</span><span>☾</span><span>✦</span><span>🗝</span></div>
+        </div>
+      </div>
+      <div class="room-charms">
+        <button data-section="food">🍓<span>food</span></button>
+        <button data-section="books">📖<span>books</span></button>
+        <button data-section="music">♫<span>music</span></button>
+        <button data-section="writing">✎<span>words</span></button>
+        <button data-section="art">🎨<span>art</span></button>
+        <button data-section="games">🎲<span>games</span></button>
+        <button data-section="fitness">🌱<span>fitness</span></button>
+      </div>
+
+
+      <section class="vision-board">
+        <div class="board-tape"></div>
+        <div class="vision-title">♡ vision board ♡</div>
+        <div class="vision-grid">
+          <div class="vision-card v1"><span class="vision-icon">🏋🏻‍♀️</span><b>fitness</b><small>stronger. hotter. happier.</small></div>
+          <div class="vision-card v2"><span class="vision-icon">🫧</span><b>skincare</b><small>glowy skin era.</small></div>
+          <div class="vision-card v3"><span class="vision-icon">♡</span><b>becoming that hot it girl</b><small>quietly, obviously.</small></div>
+          <div class="vision-card v4"><span class="vision-icon">📹</span><b>making that content</b><small>post it. stop overthinking.</small></div>
+          <div class="vision-card v5"><span class="vision-icon">🍷</span><b>hosting</b><small>good food. good people.</small></div>
+          <div class="vision-card v6"><span class="vision-icon">🪞</span><b>falling in love with myself again</b><small>the real goal.</small></div>
+        </div>
+        <div class="vision-note">Becoming HER because WE deserve it. ♡</div>
+      </section>
+
+      <div style="margin:17px 0;text-align:center;color:#9b739e">✧ · ˚ · ♡ · ˚ · ✧</div>
+
+
+      <div class="contradiction">
+        <div class="contradiction-title">oh to be a walking contradiction ♡</div>
+        <p>Been channelling masculine energy all my life, that its time to find that soft feminine side.</p>
+        <div class="duality"><span>✦ sharp edges</span><span>♡ soft heart</span><span>☾ both</span></div>
+      </div>
+
+
+      <div class="grid">
+        <div class="box">
+          <span class="tag">latest thing</span>
+          <h3>♫ song of the week</h3>
+          <p id="homeSong">nothing here yet. go add a song.</p>
+        </div>
+        <div class="box">
+          <span class="tag">tiny flex</span>
+          <h3>my little stats</h3>
+          <p id="stats">0 recipes · 0 books · 0 songs · 0 workouts</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOD -->
+    <section class="section" id="food">
+      <div class="section-head"><div><h2>food ♡</h2><div class="kicker">eat good. take pics. move on.</div></div></div>
+      <details class="add">
+        <summary>＋ put a recipe here</summary>
+        <form class="form" id="foodForm"><div class="field"><label>name</label><input name="title" required placeholder="midnight pasta"></div><div class="field"><label>vibe</label><input name="tag" placeholder="cozy / sweet / unhinged"></div><div class="field full"><label>photo of the food ♡</label><div class="image-upload"><input name="imageFile" type="file" accept="image/*" onchange="previewUpload(this)"><small class="image-hint">jpg / png / webp · your little food evidence</small><img class="upload-preview"></div></div><div class="field full"><label>ingredients</label><textarea name="ingredients"></textarea></div><div class="field full"><label>how to make it</label><textarea name="body"></textarea></div><div class="field"><label>time</label><input name="time" placeholder="20 mins"></div><div class="field"><label>link</label><input name="link" type="url"></div><div class="field full"><button class="save">♡ save it</button></div></form>
+      </details>
+      <div class="grid" id="foodList"></div>
+    </section>
+
+    <!-- BOOKS -->
+    <section class="section" id="books">
+      <div class="section-head"><div><h2>book nook</h2><div class="kicker">currently emotionally attached to fictional people</div></div></div>
+      <details class="add">
+        <summary>＋ review a book</summary>
+        <form class="form" id="bookForm"><div class="field"><label>title</label><input name="title" required></div><div class="field"><label>author</label><input name="author"></div><div class="field"><label>rating</label><select name="rating"><option>5</option><option>4.5</option><option>4</option><option>3.5</option><option>3</option><option>2</option><option>1</option></select></div><div class="field"><label>genre</label><input name="genre"></div><div class="field full"><label>book cover / photo 📖</label><div class="image-upload"><input name="imageFile" type="file" accept="image/*" onchange="previewUpload(this)"><small class="image-hint">show me what you're reading</small><img class="upload-preview"></div></div><div class="field full"><label>thoughts</label><textarea name="body"></textarea></div><div class="field full"><label>quote / tiny obsession</label><input name="quote"></div><div class="field full"><button class="save">♡ shelve it</button></div></form>
+      </details>
+      <div class="grid" id="bookList"></div>
+    </section>
+
+    <!-- MUSIC -->
+    <section class="section" id="music">
+      <div class="section-head"><div><h2>music box ♫</h2><div class="kicker">headphones on. world off.</div></div></div>
+      <details class="add">
+        <summary>＋ add song / playlist</summary>
+        <form class="form" id="musicForm">
+          <div class="field"><label>title</label><input name="title" required></div>
+          <div class="field"><label>artist</label><input name="artist"></div>
+          <div class="field"><label>type</label><select name="type"><option>song of the week</option><option>playlist</option><option>album</option><option>currently obsessed</option></select></div>
+          <div class="field"><label>link</label><input name="link" type="url" placeholder="youtube / spotify"></div>
+          <div class="field full"><label>why this one</label><textarea name="body"></textarea></div>
+          <div class="field full"><button class="save">♫ put it here</button></div>
+        </form>
+      </details>
+      <div class="grid" id="musicList"></div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section" id="blog">
+      <div class="section-head"><div><h2>thoughts</h2><div class="kicker">brain dump but make it cute</div></div></div>
+      <details class="add">
+        <summary>＋ write a post</summary>
+        <form class="form" id="blogForm">
+          <div class="field full"><label>title</label><input name="title" required></div>
+          <div class="field"><label>tiny tag</label><input name="tag" placeholder="life / random / projects"></div>
+          <div class="field"><label>date</label><input name="date" type="date"></div>
+          <div class="field full"><label>post</label><textarea name="body" style="min-height:180px"></textarea></div>
+          <div class="field full"><button class="save">✎ post it</button></div>
+        </form>
+      </details>
+      <div class="grid" id="blogList"></div>
+    </section>
+
+    <!-- WRITING -->
+    <section class="section" id="writing">
+      <div class="section-head"><div><h2>words ✎</h2><div class="kicker">little things that needed somewhere to exist</div></div></div>
+      <details class="add">
+        <summary>＋ add writing</summary>
+        <form class="form" id="writingForm">
+          <div class="field"><label>title</label><input name="title" required></div>
+          <div class="field"><label>type</label><select name="type"><option>poem</option><option>fragment</option><option>short story</option><option>random</option></select></div>
+          <div class="field full"><label>words</label><textarea name="body" style="min-height:260px"></textarea></div>
+          <div class="field full"><button class="save">♡ pin it to the wall</button></div>
+        </form>
+      </details>
+      <div class="grid" id="writingList"></div>
+    </section>
+
+    <!-- ART -->
+    <section class="section" id="art">
+      <div class="section-head"><div><h2>art attic 🎨</h2><div class="kicker">made this. liked it. keeping it.</div></div></div>
+      <details class="add">
+        <summary>＋ hang something up</summary>
+        <form class="form" id="artForm"><div class="field"><label>title</label><input name="title" required></div><div class="field"><label>medium</label><input name="medium" placeholder="digital / paint / pencil"></div><div class="field full"><label>upload your art 🎨</label><div class="image-upload"><input name="imageFile" type="file" accept="image/*" onchange="previewUpload(this)" required><small class="image-hint">this is the important bit</small><img class="upload-preview"></div></div><div class="field full"><label>caption</label><textarea name="body"></textarea></div><div class="field full"><button class="save">✦ hang it up</button></div></form>
+      </details>
+      <div class="grid" id="artList"></div>
+    </section>
+
+    <!-- GAMES -->
+    <section class="section" id="games">
+      <div class="section-head"><div><h2>game cupboard 🎲</h2><div class="kicker">winner buys snacks</div></div></div>
+      <details class="add">
+        <summary>＋ rate a game</summary>
+        <form class="form" id="gameForm"><div class="field"><label>game</label><input name="title" required></div><div class="field"><label>type</label><input name="type" placeholder="board / card / party"></div><div class="field"><label>rating / 10</label><select name="rating"><option>10</option><option>9</option><option>8</option><option>7</option><option>6</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div><div class="field"><label>players</label><input name="players" placeholder="2-6"></div><div class="field full"><label>game night photo 🎲</label><div class="image-upload"><input name="imageFile" type="file" accept="image/*" onchange="previewUpload(this)"><small class="image-hint">board on the table. snacks nearby. chaos inevitable.</small><img class="upload-preview"></div></div><div class="field full"><label>verdict</label><textarea name="body" placeholder="would i play it again?"></textarea></div><div class="field full"><button class="save">🎲 archive game night</button></div></form>
+      </details>
+      <div class="grid" id="gamesList"></div>
+    </section>
+
+    <!-- FITNESS -->
+    <section class="section" id="fitness">
+      <div class="section-head"><div><h2>fitness log 🌱</h2><div class="kicker">did a thing. counts.</div></div></div>
+      <details class="add">
+        <summary>＋ add a workout</summary>
+        <form class="form" id="fitnessForm"><div class="field"><label>workout</label><input name="title" required placeholder="10 min pilates"></div><div class="field"><label>youtube</label><input name="youtube" type="url" required></div><div class="field"><label>daily goal / mins</label><input name="goal" type="number" min="1" value="10"></div><div class="field"><label>note</label><input name="note" placeholder="felt surprisingly good"></div><div class="field full"><label>workout photo 🌱</label><div class="image-upload"><input name="imageFile" type="file" accept="image/*" onchange="previewUpload(this)"><small class="image-hint">optional. sweat evidence accepted.</small><img class="upload-preview"></div></div><div class="field full"><button class="save">🌱 add it</button></div></form>
+      </details>
+      <div class="grid" id="fitnessList"></div>
+    </section>
+
+
+
+
+    
+
+    <section class="whimsy-labyrinth" aria-label="Amy's moonlit labyrinth">
+      <div class="maze-sky">
+        <span class="maze-moon">☾</span>
+        <span class="maze-star ms1">✦</span><span class="maze-star ms2">✧</span>
+        <span class="maze-star ms3">·</span><span class="maze-star ms4">✦</span>
+      </div>
+      <div class="maze">
+        <div class="maze-wall wall-a"></div><div class="maze-wall wall-b"></div>
+        <div class="maze-wall wall-c"></div><div class="maze-wall wall-d"></div>
+        <div class="maze-wall wall-e"></div><div class="maze-wall wall-f"></div>
+        <div class="maze-wall wall-g"></div><div class="maze-wall wall-h"></div>
+        <div class="maze-wall wall-i"></div><div class="maze-wall wall-j"></div>
+        <div class="maze-wall wall-k"></div><div class="maze-wall wall-l"></div>
+        <div class="maze-wall wall-m"></div><div class="maze-wall wall-n"></div>
+        <div class="maze-wall wall-o"></div>
+        <div class="maze-flower mf1">✿</div><div class="maze-flower mf2">❀</div>
+        <div class="maze-flower mf3">✿</div><div class="maze-flower mf4">✧</div>
+        <div class="maze-lily ml1">❀</div><div class="maze-lily ml2">❀</div>
+        <div class="maze-cat maze-player" aria-label="orange cat player">🐈</div>
+        <div class="maze-goal" aria-label="sparkly final goal">
+          <span>✦</span><span>✧</span><b>♡</b><span>✧</span><span>✦</span>
+          <small>you made it ♡</small>
+        </div>
+        <div class="maze-note">guide the kitty<br><b>to the sparkles.</b></div>
+        <div class="maze-firefly ff1">✦</div><div class="maze-firefly ff2">·</div><div class="maze-firefly ff3">✧</div>
+      </div>
+      <div class="maze-caption">
+      <span>✦ use your cursor to guide the orange kitty through the maze ✦</span>
+      <button type="button" id="mazeReset">↻ reset</button>
+    </div>
+    </section>
+
+
+  </main>
+
+  <div class="footer">
+    ☆ powered by cats, snacks & questionable html decisions ☆<br>
+    <span class="badge">ROMANTICS</span>
+    <br>
+    <button class="save" onclick="backup()">↓ backup</button>
+    <button class="save" onclick="document.getElementById('restore').click()">↑ restore</button>
+    <input id="restore" type="file" accept=".json" hidden>
+    <button class="save" onclick="wipe()">× wipe local posts</button>
+  </div>
+
+</div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2 id="modalTitle">guestbook</h2>
+    <p id="modalText"></p>
+    <form id="guestForm" class="form">
+      <div class="field"><label>name</label><input name="name" required></div>
+      <div class="field"><label>current vibe</label><input name="vibe" placeholder="sleepy, chaotic, etc."></div>
+      <div class="field full"><label>message</label><textarea name="message" required></textarea></div>
+      <div class="field full"><button class="save">♡ leave a tiny note</button></div>
+    </form>
+    <div id="guestList"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   AMYWRITES — PUBLIC READER
+   Neocities serves this page and content.json.
+   No browser connection to Supabase is needed here.
+   ========================================================= */
+(function(){
+  const icon = {
+    food:'🍓', books:'📖', music:'♫', blog:'💌',
+    writing:'✎', art:'🎨', games:'🎲', fitness:'🌱'
+  };
+
+  function esc(v=''){
+    return String(v)
+      .replaceAll('&','&amp;').replaceAll('<','&lt;')
+      .replaceAll('>','&gt;').replaceAll('"','&quot;')
+      .replaceAll("'",'&#039;');
+  }
+
+  function url(v){
+    try{ const u=new URL(v,location.href); return /^https?:$/.test(u.protocol)?u.href:''; }
+    catch{return '';}
+  }
+
+  function empty(t){
+    return `<div class="box" style="grid-column:1/-1;text-align:center">${t}</div>`;
+  }
+
+  function imageMarkup(src,title){
+    if(!src) return `<div class="post-thumb" style="display:grid;place-items:center;font-size:28px;color:#b45b83;background:#ffeef5">♡</div>`;
+    return `<img class="post-thumb" src="${esc(src)}" alt="${esc(title||'uploaded image')}" loading="lazy">`;
+  }
+
+  function compactPost(post, type){
+    const ex=post.extra||{};
+    const body=post.body||'';
+    const ingredients=ex.ingredients||'';
+    const quote=ex.quote||'';
+    const meta=post.subtitle || type;
+    const thumb=post.image_url || '';
+    const expandImage=thumb ? `<img class="uploaded-image post-image" src="${esc(thumb)}" alt="${esc(post.title)}" loading="lazy">` : '';
+
+    const extra=[];
+    if(ingredients) extra.push(`<div><b>ingredients</b><br>${esc(ingredients).replace(/\\n/g,'<br>')}</div>`);
+    if(ex.author) extra.push(`<p><b>author:</b> ${esc(ex.author)}</p>`);
+    if(ex.rating) extra.push(`<p><b>rating:</b> ${esc(ex.rating)}</p>`);
+    if(ex.genre) extra.push(`<p><b>genre:</b> ${esc(ex.genre)}</p>`);
+    if(ex.medium) extra.push(`<p><b>medium:</b> ${esc(ex.medium)}</p>`);
+    if(ex.players) extra.push(`<p><b>players:</b> ${esc(ex.players)}</p>`);
+    if(ex.time) extra.push(`<p><b>time:</b> ${esc(ex.time)}</p>`);
+    if(ex.goal) extra.push(`<p><b>goal:</b> ${esc(ex.goal)} mins</p>`);
+    if(ex.note) extra.push(`<p><b>note:</b> ${esc(ex.note)}</p>`);
+    if(ex.logs && Array.isArray(ex.logs) && ex.logs.length){
+      extra.push(`<div><b>workout log</b>${ex.logs.map(l=>`<div class="fitness-day">${esc(l.date||'')} — ${esc(l.minutes||'')} min</div>`).join('')}</div>`);
+    }
+    if(quote) extra.push(`<p><i>“${esc(quote)}”</i></p>`);
+    if(ex.link && url(ex.link)) extra.push(`<p><a href="${esc(url(ex.link))}" target="_blank" rel="noopener">↗ open link</a></p>`);
+    if(ex.youtube && url(ex.youtube)) extra.push(`<p><a href="${esc(url(ex.youtube))}" target="_blank" rel="noopener">♫ youtube</a></p>`);
+
+    return `<article class="post-card ${thumb?'':'no-photo'}" data-expandable>
+      ${imageMarkup(thumb,post.title)}
+      <div class="post-preview-copy">
+        <div class="post-preview-title">${icon[type]||'✦'} ${esc(post.title||'untitled')}</div>
+        <div class="post-preview-meta">${esc(meta)}</div>
+        ${body||ingredients ? `<div class="post-preview-snippet">${esc((body||ingredients).slice(0,220))}</div>`:''}
+        <div class="post-open">♡ click</div>
+      </div>
+      <div class="post-expand">
+        ${expandImage}
+        ${body ? `<div>${esc(body).replace(/\\n/g,'<br>')}</div>`:''}
+        ${extra.join('')}
+      </div>
+    </article>`;
+  }
+
+  function bindCards(root){
+    root.querySelectorAll('[data-expandable]').forEach(card=>{
+      card.addEventListener('click',e=>{
+        if(e.target.closest('a,button,input,textarea,select')) return;
+        card.classList.toggle('expanded');
+        const label=card.querySelector('.post-open');
+        if(label) label.textContent=card.classList.contains('expanded')?'♡ close':'♡ click';
+      });
+    });
+  }
+
+  function renderCategory(id,posts,type,message){
+    const el=document.getElementById(id);
+    if(!el) return;
+    el.innerHTML=posts.length ? posts.map(p=>compactPost(p,type)).join('') : empty(message);
+    bindCards(el);
+  }
+
+  function showNotice(notice){
+    if(!notice) return;
+    const title=document.getElementById('noticeTitle');
+    const text=document.getElementById('noticeText');
+    const visual=document.getElementById('noticeVisual');
+    const box=document.getElementById('siteNotice');
+    if(title) title.textContent=notice.title || '';
+    if(text) text.textContent=notice.body || notice.text || '';
+    if(visual && notice.image_url){
+      visual.innerHTML=`<img src="${esc(notice.image_url)}" alt="" loading="lazy">`;
+      visual.style.display='block';
+      box?.classList.remove('no-image');
+    }else if(visual){
+      visual.innerHTML='';
+      visual.style.display='none';
+    }
+  }
+
+  function showSong(posts){
+    const el=document.getElementById('homeSong');
+    if(!el) return;
+    const song=posts.find(p=>p.type==='music');
+    el.innerHTML=song
+      ? `<b>${esc(song.title)}</b> — ${esc(song.extra?.artist||'')}<br><small>${esc(song.body||'')}</small>`
+      : 'nothing here yet. ♡';
+  }
+
+  function showStats(all){
+    const count=t=>all.filter(p=>p.type===t).length;
+    const el=document.getElementById('stats');
+    if(el) el.textContent=`${count('food')} recipes · ${count('books')} books · ${count('music')} songs · ${count('fitness')} workouts`;
+  }
+
+  async function load(){
+    try{
+      const response=await fetch('content.json?v='+Date.now(),{cache:'no-store'});
+      if(!response.ok) throw new Error('content.json returned '+response.status);
+      const payload=await response.json();
+      const posts=Array.isArray(payload.posts)?payload.posts:[];
+
+      showNotice(payload.notice);
+      showSong(posts);
+      showStats(posts);
+
+      renderCategory('foodList',posts.filter(p=>p.type==='food'),'food','no recipes yet. go make something delicious.');
+      renderCategory('bookList',posts.filter(p=>p.type==='books'),'books','the shelves are empty. tragic.');
+      renderCategory('musicList',posts.filter(p=>p.type==='music'),'music','silence. suspicious.');
+      renderCategory('blogList',posts.filter(p=>p.type==='blog'),'blog','no thoughts posted. suspiciously peaceful.');
+      renderCategory('writingList',posts.filter(p=>p.type==='writing'),'writing','blank page. make it weird.');
+      renderCategory('artList',posts.filter(p=>p.type==='art'),'art','nothing hanging here yet.');
+      renderCategory('gamesList',posts.filter(p=>p.type==='games'),'games','no game nights yet. roll the dice.');
+      renderCategory('fitnessList',posts.filter(p=>p.type==='fitness'),'fitness','no workouts logged yet.');
+
+      /* Navigation — kept client-side because it only switches local sections. */
+      document.querySelectorAll('#nav button').forEach(b=>{
+        b.onclick=()=>{
+          document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===b.dataset.section));
+          document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x===b));
+          window.scrollTo({top:0,behavior:'smooth'});
+        };
+      });
+      document.querySelectorAll('.room-charms button').forEach(b=>{
+        b.onclick=()=>document.querySelector(`#nav button[data-section="${b.dataset.section}"]`)?.click();
+      });
+
+      /* Tiny status line, so you know the page is reading the published copy. */
+      const home=document.getElementById('home');
+      if(home && !document.getElementById('publicSyncStatus')){
+        const s=document.createElement('div');
+        s.id='publicSyncStatus'; s.className='public-sync-status';
+        s.textContent='✦ little attic synced from the published archive ✦';
+        home.appendChild(s);
+      }
+
+    }catch(err){
+      console.error('AmyWrites public archive:',err);
+      document.querySelectorAll('[id$="List"]').forEach(el=>{
+        el.innerHTML=empty('the attic is being dramatic rn. try again in a sec. ♡');
+      });
+    }
+  }
+
+  /* Keep the cute clock / sparkle dust from the old page. */
+  function tick(){
+    const el=document.getElementById('clock');
+    if(el) el.textContent=new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  }
+  tick(); setInterval(tick,1000);
+
+  const dust=document.getElementById('dust');
+  if(dust){
+    for(let i=0;i<45;i++){
+      const s=document.createElement('i');
+      s.className='dust';
+      s.style.left=Math.random()*100+'%';
+      s.style.top=Math.random()*100+'%';
+      s.style.animationDelay=(-Math.random()*4)+'s';
+      dust.appendChild(s);
+    }
+  }
+
+  /* Maze: preserve the existing local game without any external network calls. */
+  /* The original maze markup remains in the page. A compact re-init follows. */
+  (function initMaze(){
+    const maze=document.querySelector('.maze');
+    const player=document.querySelector('.maze-player');
+    const goal=document.querySelector('.maze-goal');
+    const reset=document.getElementById('mazeReset');
+    if(!maze||!player||!goal||!reset) return;
+    let won=false, frame=0, x=18, y=maze.clientHeight-52, tx=x, ty=y;
+    function pos(px,py){x=px;y=py;player.style.left=x+'px';player.style.top=y+'px';player.style.bottom='auto';}
+    function start(){const mx=Math.max(20,maze.clientWidth-48), my=Math.max(20,maze.clientHeight-48);pos(Math.min(18,mx),Math.min(my,maze.clientHeight-52));tx=x;ty=y;}
+    function overlap(a,b){return !(a.right<=b.left||a.left>=b.right||a.bottom<=b.top||a.top>=b.bottom)}
+    function rect(px,py){const r=player.getBoundingClientRect(),m=maze.getBoundingClientRect();return{left:m.left+px+4,top:m.top+py+4,right:m.left+px+r.width-4,bottom:m.top+py+r.height-4}}
+    function blocked(px,py){const r=rect(px,py);return [...maze.querySelectorAll('.maze-wall')].some(w=>overlap(r,w.getBoundingClientRect()))}
+    function clamp(){tx=Math.max(8,Math.min(maze.clientWidth-player.offsetWidth-8,tx));ty=Math.max(8,Math.min(maze.clientHeight-player.offsetHeight-8,ty));}
+    function wonCheck(){const r=rect(x,y),g=goal.getBoundingClientRect(),cx=(r.left+r.right)/2,cy=(r.top+r.bottom)/2,gx=(g.left+g.right)/2,gy=(g.top+g.bottom)/2;if(!won&&Math.hypot(cx-gx,cy-gy)<40){won=true;maze.classList.add('is-won');player.classList.add('happy');if(!maze.querySelector('.maze-win')){const m=document.createElement('div');m.className='maze-win';m.innerHTML='you found the good part. ✦<small>the kitty made it home ♡</small>';maze.appendChild(m)}}}
+    function move(){const dx=tx-x,dy=ty-y,d=Math.hypot(dx,dy);if(d>.5){const step=Math.min(3.6,d),nx=x+dx/d*step,ny=y+dy/d*step;if(!blocked(nx,y))x=nx;if(!blocked(x,ny))y=ny;player.style.left=x+'px';player.style.top=y+'px';}wonCheck();if(!won){frame=requestAnimationFrame(move)}else frame=0;}
+    function pointer(e){const r=maze.getBoundingClientRect();tx=e.clientX-r.left-player.offsetWidth/2;ty=e.clientY-r.top-player.offsetHeight/2;clamp();if(!won&&!frame)frame=requestAnimationFrame(move)}
+    maze.addEventListener('pointermove',pointer);maze.addEventListener('pointerdown',pointer);
+    reset.addEventListener('click',()=>{won=false;maze.classList.remove('is-won');maze.querySelector('.maze-win')?.remove();cancelAnimationFrame(frame);frame=0;start()});
+    start();
+  })();
+
+  document.addEventListener('DOMContentLoaded',load);
+})();
+</script>
+</body>
+</html>
